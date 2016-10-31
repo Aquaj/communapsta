@@ -1,0 +1,23 @@
+<div class="content">
+  <div class="medium-spacer"></div>
+  <ul class="table-view">
+    <% @tracks.each do |track| %>
+
+      <%= link_to track_path(track) do %>
+        <li class="card">
+          <span class="card-bg" style="background-image: url('<%= track.picture %>')"></span>
+          <span class="card-shadow"></span>
+          <% if track.votes.count >= 2 %>
+            <span class="card-description"><p><%= track.vites.count %> votes !</p></span>
+          <% end %>
+          <span class="card-text">
+            <h2><%= track.title %></h2>
+          </span>
+        </li>
+        <div class" btn-block">
+          <%= link_to "upvote", votes_path, method: :post, class:'btn btn-menu btn-block' %>
+        </div>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
